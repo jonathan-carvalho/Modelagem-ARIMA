@@ -101,6 +101,7 @@ def soma_quadrados(serie, d, pesos_AR, pesos_MA):
 
     intervalo_ruidos_estimados = range(len(pesos_AR)+1, serie.size+1)
     ruidos_estimados = estimacao_ruidos['At'].loc[intervalo_ruidos_estimados]
+    ruidos_estimados.index = range(1, ruidos_estimados.size+1)
 
     return resultado_soma, ruidos_estimados
 
@@ -129,11 +130,29 @@ def estimacao_parametros(modelo, serie, qtd_diferencas):
 
     return modelo
 
+def calcula_autocovariancia(lag, serie):
+
+    tamanho_amostra = serie.size
+    media_amostral = serie.mean()
+
+    estimativa_autocovariancia = 0
+
+    for t in range(1, tamanho_amostra-lag+1):
+
+        estimativa_autocovariancia += (serie[t] - media_amostral) * (serie[t+lag] - media_amostral)
+
+    estimativa_autocovariancia /= tamanho_amostra
+
+    return estimativa_autocovariancia
+
 def calcula_autocorrelacao(lag, serie):
 
+    estimativa_gamma_k = calcula_autocovariancia(lag, serie)
+    estimativa_gamma_0 = calcula_autocovariancia(0, serie)
 
-    return valor_autocorrelacao
+    estimativa_autocorrelacao = estimativa_gamma_k / estimativa_gamma_0
 
+    return estimativa_autocorrelacao
 
 def portmanteau_teste(modelo, K=25):
 
