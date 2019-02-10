@@ -1,1 +1,5 @@
-# Modelagem-ARIMA
+# Modelagem de Séries Temporais
+
+Uma série temporal é a composição de diversas observações de um fenômeno coletadas de maneira sequencial no tempo. Desde que as observações adjacentes possuam dependência, é possível aplicar sofisticados métodos para detectar e para modelar esses padrões existentes nos dados. Uma das possibilidades para modelar esses processos dinâmicos e estocásticos é por meio da aplicação do genérico modelo elaborado por George Box e Gwilym Jenkins, o Autorregressivo Integrado de Médias Móveis ou ARIMA, acrônimo do termo em inglês.
+
+Com o método de Box-Jenkins é possível modelar séries estacionárias ou não estacionárias, desde que a não estacionariedade seja homogênea, a partir das observações anteriores à atual e também dos valores passados dos erros de predição, associado com o erro da medição atual. Nesse sentido, o objetivo do projeto é implementar um processo automático para estabelecer um determinado modelo da classe ARIMA que melhor se ajuste a uma série temporal fornecida. O procedimento aplicado está totalmente baseado nos estágios definidos pelos próprios autores para a construção de modelos, são eles: identificação das ordens do modelo, estimação eficiente dos parâmetros e, por fim, o diagnóstico da adequação do modelo aos dados.
