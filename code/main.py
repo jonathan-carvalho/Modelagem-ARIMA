@@ -71,5 +71,5 @@ print(modelo_selecionado.pesos_medias_moveis)
 print('Estatística Q: ' + str(modelo_selecionado.Q_valor_portmanteau))
 print('Valor p: ' + str(modelo_selecionado.p_valor_portmanteau))
 
-exibir_fac_ruido(modelo_selecionado.autocorrelacoes_ruidos)
+exibir_fac_ruido(modelo_selecionado.autocorrelacoes_ruidos, modelo_selecionado.ruidos_estimados.size)
 comparacao_esperado_obtido(serie_temporal, modelo_selecionado)

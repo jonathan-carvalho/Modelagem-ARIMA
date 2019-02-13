@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 from pandas import DataFrame
+from math import sqrt
 
-def exibir_fac_ruido(autocorrelacoes_ruido):
+def exibir_fac_ruido(autocorrelacoes_ruido, qtd_ruidos_estimados):
 
     eixos = autocorrelacoes_ruido.plot(kind='bar', width=0.2, color='b',
                                         title='Autocorrelações dos Ruídos Estimados',
@@ -9,6 +10,9 @@ def exibir_fac_ruido(autocorrelacoes_ruido):
     eixos.set_xlabel('Lag', fontsize=12)
     eixos.set_ylabel('FAC', fontsize=12)
     eixos.axhline(color='000')
+
+    eixos.axhline(2/sqrt(qtd_ruidos_estimados), color='r', linestyle='--')
+    eixos.axhline(-2/sqrt(qtd_ruidos_estimados), color='r', linestyle='--')
     plt.show()
 
 def comparacao_esperado_obtido(serie_original, modelo):
